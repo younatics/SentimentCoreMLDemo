@@ -11,7 +11,7 @@ final class ViewController: UIViewController {
     
     private let classificationService = ClassificationService()
     
-    
+    var startTime = Date()
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -51,6 +51,7 @@ final class ViewController: UIViewController {
     private func show(sentiment: Sentiment) {
         accessoryView.backgroundColor = sentiment.color
         resultLabel.text = sentiment.emoji
+        print("Time Interval: \(Date().timeIntervalSince(startTime))")
     }
     
     // MARK: - Actions
@@ -128,6 +129,7 @@ private extension ViewController {
 
 extension ViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
+        startTime = Date()
         guard let text = textView.text else {
             return
         }
