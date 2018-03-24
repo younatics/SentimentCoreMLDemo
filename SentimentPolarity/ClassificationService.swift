@@ -51,9 +51,9 @@ private extension ClassificationService {
     tagger.enumerateTags(in: range, scheme: .nameType, options: options) { _, tokenRange, _, _ in
       let token = (text as NSString).substring(with: tokenRange).lowercased()
       // Skip small words
-      guard token.count >= 3 else {
-        return
-      }
+//      guard token.count >= 3 else {
+//        return
+//      }
 
       if let value = wordCounts[token] {
         wordCounts[token] = value + 1.0
